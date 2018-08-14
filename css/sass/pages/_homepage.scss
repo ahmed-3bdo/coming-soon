@@ -1,0 +1,250 @@
+// background Section
+.background {
+    background: url('../imgs/bg.png') no-repeat bottom center;
+    @extend %cover;
+    position: relative;
+    font-family: $main-font;
+    overflow: hidden;
+    // Overlay
+    .overlay {
+        @extend %overlay;
+    }
+
+    // Navigation
+    .navigation {
+        @extend %absolute;
+        .container{
+            width: 90%;
+            margin:0 auto;
+            overflow: hidden;
+            padding-top: 10px;
+        }
+        .brand {
+            float: $float-left;
+            a{
+                color: $main-color;
+                text-transform: uppercase;
+                font-family: $seconed-font;
+                text-decoration: none;
+                &:hover {
+                    color: $white-color;
+                }
+            }
+        }
+        ul.social-links {
+            float: $float-right;
+            list-style: none;
+            margin-top: 5px;
+            li {
+                float: $float-left;
+                margin: 0 5px;
+                a {
+                    @include b-radius(50%);
+                    @include transition(.3s);
+                    padding: 5px;
+                    background-color: $seconed-color;
+                    @each $name, $color in $social {
+                        .fa-#{$name} {
+                            color: $color;
+                        }
+                        &:hover {
+                            border: 1px solid $color;
+                            background-color: $main-color;
+                            color: $seconed-color;
+                            padding: 7px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Coming Soon
+    .coming-soon {
+        color: $main-color;
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        @include transform(translate(-50%,-50%));
+        z-index: 2;
+        h1 {
+            font-weight: bold;
+            font-family: $seconed-font;
+            margin-bottom: 0;
+        }
+        p {
+            margin-top: 10px;
+        }
+        form {
+            position: relative;
+            width: 100%;
+            input {
+                position: relative;
+                background: rgba($color: $seconed-color, $alpha: .7);
+                padding: 10px 85px 10px 20px;
+                @include b-radius(50px);
+                border: 0;
+                outline: 0;
+                margin-top: 15px;
+                color: $main-color;
+                width: 100%;
+            }
+            button {
+                position: absolute;
+                right: 0;
+                top: 15px;
+                color: $main-color;
+                background-color: $button-color;
+                padding: 13px 15px 13px 10px;
+                border: 0;
+                outline: 0;
+                @include b-radius(0 50px 50px 0);
+            }
+        }
+    }
+    
+    // About
+    .about{
+        position: absolute;
+        width: 70%;
+        height: 70vh;
+        right: 100.5%;
+        top: 15vh;
+        color: $seconed-color;
+        background-color: $main-color;
+        @extend %jsutify-center;
+        align-items: center;
+        z-index: 3;
+        button.about-us{
+            position: absolute;
+            right: -87px;
+            top: 50%;
+            font-size: 24px;
+            color: $main-color;
+            background-color: $seconed-color;
+            @include transform(rotate(-90deg));
+            letter-spacing: 10px;
+            border: none;
+            outline: 0;
+        }
+        .fa-close{
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            &.fa{
+                color: $seconed-color;
+            }
+        }
+        .about-content{
+            height: 90%;
+            width: 100%;
+            padding: 10px;
+            margin-top: 10%;
+            overflow-y: auto;
+            overflow-x: hidden;
+            h2{
+                margin-bottom: 20px;
+                font-weight: bold;
+            }
+            p{
+                line-height: 1.7;
+            }
+        }
+    }
+
+    // Counter
+    .counter {
+        position: absolute;
+        @extend %space-around;
+        color: $main-color;
+        bottom: 25px;
+        left: 10%;
+        width: 80%;
+        height: 40px;
+        .count {
+            text-align: center;
+            font-size: 20px;
+            span:first-child {
+                display: block;
+                font-family: $seconed-font;
+            }
+            span:last-child {
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+
+
+// Animations
+@keyframes fadein{
+    0%{
+        right: 100.5%;
+    }
+    50%, 100%{
+        right: 15%;
+        width: 70%;
+    }
+    75%{
+        right: 15%;
+        width: 40%;
+    }
+}
+
+@keyframes fadeout{
+    0%{
+        right: 15%;
+        width: 70%;
+    }
+    100%{
+        right: 100.5%;
+    }
+}
+
+
+// Classes To Extend
+
+// Cover
+%cover{
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+}
+
+// overlay
+%overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: $seconed-color, $alpha: .3);
+    z-index: 0;
+}
+
+// position absolute
+%absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+// justify center
+%jsutify-center{
+    display: flex;
+    justify-content: center;
+}
+
+// Space around
+%space-around{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+
